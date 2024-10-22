@@ -9,13 +9,46 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            ZStack {
+                Image("money-bg")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    Spacer()
+                    Text("Welcome to your Expenses Tracker")
+                        .font(.title)
+                        .foregroundColor(Color("DeepBlue"))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 12)
+                        .dynamicTypeSize(.xSmall)
+                    
+                    Spacer()
+                    VStack {
+                        NavigationLink(destination: ExpensesView()) {
+                            HStack {
+                                Image(systemName: "dollarsign")
+                                    .imageScale(.medium)
+                                    .foregroundStyle(Color.gray)
+                                    .padding(.leading, 4)
+                                
+                                Text("Start tracking your expenses!")
+                                    .padding(10)
+                            }
+                            .foregroundColor(Color.gray)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                        }
+                    }
+                    .padding(10)
+                }
+                .padding()
+                .frame(maxHeight: .infinity, alignment: .bottom)
+            }
         }
-        .padding()
     }
 }
 
